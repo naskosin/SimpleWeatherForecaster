@@ -1,0 +1,11 @@
+.Header{
+    background-color: blueviolet;
+}
+
+
+.Card{
+    width:20%;
+    background-color: green;
+    text-align: center;
+    margin: 50px auto;
+}
