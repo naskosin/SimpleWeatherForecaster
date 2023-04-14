@@ -1,9 +1,14 @@
 html{
-  background-color: #61dafb;
+background-image: url(../../bio/public/Stock.jpg);
+background-size: cover;
+
 
 }
 
+.SearchBox{
+  margin: 50px
 
+}
 .App {
   text-align: center;
 }

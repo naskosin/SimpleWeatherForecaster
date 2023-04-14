@@ -1,0 +1,18 @@
+.SearchBox__label{
+font-size: larger;
+color: aliceblue;
+padding: 5px;
+}
+.SearchBox__input{
+
+}
+.SearchBox__button{
+display: block;
+margin: 15px auto;
+background-color: blue;
+color: aliceblue;
+padding: 5px 25px;
+border: none;
+border-radius: 25px;
+
+}

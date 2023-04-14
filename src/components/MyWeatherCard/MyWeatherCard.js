@@ -1,14 +1,40 @@
 import moment from "moment";
+import { dateBuilder } from "../../services/datebuilder";
+import { weatherPic } from "../../services/weatherPic";
 import "./MyCard.css";
 
 export const MyCard = ({ weather }) => {
+   const condition=  weatherPic(weather.weather[0].main)
   return (
     <div className="Card">
       <header className="Header">{weather.name}</header>
-      <p>Actual temp: {weather.main.temp}</p>
-      <p>Feels like: {new Date().toLocaleTimeString("en-IN")}</p>
-      <p>Date: {moment().format("dddd")}</p>
-      <p>Time: {moment().format("LL")}</p>
-    </div>
+      <div className="Date">
+      {/* <p>Date: {dateBuilder(new Date())}</p> */}
+      <p>{moment().format("dddd")}, {moment().format("LL")}</p>
+    
+      </div>
+    
+      <div className="ImageContainer">
+          
+      <img src={condition}/>
+      </div>
+      <div className="Temperature">
+        <p>
+          Actual temp: <span>{weather.main.temp} &deg;C</span>
+        </p>
+        <p>
+          Feels like: <span>{weather.main.feels_like} &deg;C</span>
+        </p>
+        {/* <img src='./1147979.avif'/> */}
+      </div>
+      <p className="Condition">
+        Condition: <span>{weather.weather[0].main}</span>
+      </p>
+      <p>Wind: {weather.wind.speed}m/s</p>
+      <p>Atmosphere pressure: {weather.main.pressure}hpa</p>
+      <p>Max temperature: {weather.main.temp_max}&deg;C</p>
+      <p>Min temperature: {weather.main.temp_min}&deg;C</p>
+      <p>Humidity: {weather.main.humidity}</p>
+      </div>
   );
 };

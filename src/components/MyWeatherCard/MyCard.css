@@ -1,11 +1,68 @@
-.Header{
-    background-color: blueviolet;
-}
+
+
 
 
 .Card{
     width:20%;
-    background-color: green;
-    text-align: center;
+    background-image: url(../../../public/images.jpg);
+    background-size: cover;
+    text-align: left;
     margin: 50px auto;
+    border-radius: 30px;
+   text-indent: 12px;
+ 
+    
 }
+
+span{
+    color: antiquewhite;
+    
+}
+.Condition{
+font-size: x-large;
+}
+.Header{
+    background-color: blueviolet;
+    font-size: x-large;
+    text-align: center;
+}
+.Date{
+    background-color: blueviolet;
+    color: antiquewhite;
+
+}
+.Date>p{
+    margin:0px;
+
+}
+.ImageContainer{
+    display: inline-block;
+    width: 50%;
+    box-sizing: border-box;
+    text-indent: 0px;
+}
+img{
+    width:100%;
+    height:100%;
+    text-indent: 0px;
+
+}
+
+.Temperature p{
+    margin: 0;
+    text-align: right;
+    padding: 5px;
+    /* text-indent: 0px; */
+
+}
+.Temperature{
+    background-color: brown;
+    display: inline-block;
+    width: 50%;
+    opacity: 0.7;
+    vertical-align: top;
+    /* margin-left: 200px */
+    margin:50px 0px;
+
+
+    }

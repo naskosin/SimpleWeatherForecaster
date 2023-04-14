@@ -26,7 +26,8 @@ export const MyBio = () => {
             `${process.env.REACT_APP_API_URL}/weather/?lat=${lat}&lon=${long}&units=metric&APPID=${process.env.REACT_APP_API_KEY}`
         )
           .then((res) => res.json())
-          .then((result) => {setWeather(result)
+          .then((result) => {setWeather(result);
+            console.log(result)
            
           });
       };
@@ -44,11 +45,11 @@ export const MyBio = () => {
 
   return (
     <div>
-      <SearchBox weatherHandler={weatherDataHandler} />
+      <SearchBox  weatherHandler={weatherDataHandler} />
       {(typeof weather.main !== "undefined") ? (
         <MyCard weather={weather} />
       ) : (
-        <p>Nothing in database</p>
+        <p>Loading<i className="far fas fa-spinner fa-pulse"></i> </p>
       )}
     </div>
   );
