@@ -1,0 +1,8 @@
+.fiveDays{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 10px;
+    width: 80%;
+    margin: 0 auto;
+}

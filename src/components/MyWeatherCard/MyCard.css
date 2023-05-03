@@ -15,7 +15,7 @@
 }
 
 span{
-    color: antiquewhite;
+    color: rgb(240, 27, 187);
     
 }
 .Condition{
@@ -56,10 +56,10 @@ img{
 
 }
 .Temperature{
-    background-color: brown;
+    background-color: lightblue;
     display: inline-block;
     width: 50%;
-    opacity: 0.7;
+    opacity: 0.8;
     vertical-align: top;
     /* margin-left: 200px */
     margin:50px 0px;

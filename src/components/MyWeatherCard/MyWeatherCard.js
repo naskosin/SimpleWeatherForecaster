@@ -3,14 +3,14 @@ import { dateBuilder } from "../../services/datebuilder";
 import { weatherPic } from "../../services/weatherPic";
 import "./MyCard.css";
 
-export const MyCard = ({ weather }) => {
+export const MyCard = ({ weather, index }) => {
    const condition=  weatherPic(weather.weather[0].main)
   return (
     <div className="Card">
       <header className="Header">{weather.name}</header>
       <div className="Date">
       {/* <p>Date: {dateBuilder(new Date())}</p> */}
-      <p>{moment().format("dddd")}, {moment().format("LL")}</p>
+      <p>{moment().add(index,'day').format("dddd")}, {moment().add(index,'day').format("LL")}</p>
     
       </div>
     
@@ -25,7 +25,7 @@ export const MyCard = ({ weather }) => {
         <p>
           Feels like: <span>{weather.main.feels_like} &deg;C</span>
         </p>
-        {/* <img src='./1147979.avif'/> */}
+        
       </div>
       <p className="Condition">
         Condition: <span>{weather.weather[0].main}</span>

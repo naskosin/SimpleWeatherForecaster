@@ -1,11 +1,13 @@
 import { useState, useEffect, useRef } from "react";
 import { MyCard } from "../MyWeatherCard/MyWeatherCard";
 import { SearchBox } from "../SearchBox/SearchBox";
+import { FiveWeatherData } from "../FiveDays/FiveDays";
+import { getDataByLocation, getDataByLocationFiveDay } from "../../services/fetchData";
 
 export const MyBio = () => {
   const [lat, setLat] = useState();
   const [long, setLong] = useState();
-  //const [data, setData] = useState([]);
+  const [fiveDaysweather, setfiveDaysweather] = useState([]);
   const [weather, setWeather] = useState([]);
   const isMounted = useRef(false);
 
@@ -21,18 +23,16 @@ export const MyBio = () => {
 
   useEffect(() => {
     if (isMounted.current) {
-      const fetchdata = async () => {
-        await fetch(
-            `${process.env.REACT_APP_API_URL}/weather/?lat=${lat}&lon=${long}&units=metric&APPID=${process.env.REACT_APP_API_KEY}`
-        )
-          .then((res) => res.json())
-          .then((result) => {setWeather(result);
-            console.log(result)
-           
-          });
-      };
-      console.log("Hi");
-      fetchdata();
+     getDataByLocation(lat, long)
+      
+          .then((result) => {setWeather(result); 
+            //setfiveDaysweather(result.name)
+            console.log(result)});
+    getDataByLocationFiveDay(lat, long)
+   
+          .then((result) => {
+         setfiveDaysweather(Object.values(result.list))
+            console.log(result)});
     } else {
       isMounted.current = true;
       console.log("No");
@@ -42,15 +42,18 @@ export const MyBio = () => {
   const weatherDataHandler = (data) => {
     setWeather(data);
   };
-
+  const weatherFiveDataHandler = (data) => {
+    setfiveDaysweather(data);
+  };
   return (
     <div>
-      <SearchBox  weatherHandler={weatherDataHandler} />
+      <SearchBox  weatherHandler={weatherDataHandler} weatherFiveDataHandler={weatherFiveDataHandler}/>
       {(typeof weather.main !== "undefined") ? (
         <MyCard weather={weather} />
       ) : (
         <p>Loading<i className="far fas fa-spinner fa-pulse"></i> </p>
       )}
+        {fiveDaysweather ? <FiveWeatherData weatherData={fiveDaysweather}/>: <p>Nothing to display!</p>}
     </div>
   );
 };
